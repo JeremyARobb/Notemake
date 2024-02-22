@@ -1,0 +1,627 @@
+dog | chó
+cat | mèo
+fish | cá
+bird | chim
+cow | bò
+pig | lợn
+mouse | chuột
+horse | ngựa
+wing | cánh
+animal | động vật
+train | tàu hỏa
+plane | máy bay
+car | xe hơi
+truck | xe tải
+bicycle | xe đạp
+bus | xe buýt
+boat | thuyền
+ship | tàu
+tire | lốp
+gasoline | xăng
+engine | động cơ
+ticket | vé
+transportation | phương tiện giao thông
+city | thành phố
+house | nhà
+apartment | căn hộ
+street/road | đường phố
+airport | sân bay
+train station | ga tàu
+bridge | cầu
+hotel | khách sạn
+restaurant | nhà hàng
+farm | nông trại
+court | tòa án
+school | trường học
+office | văn phòng
+room | phòng
+town | thị trấn
+university | đại học
+club | câu lạc bộ
+bar | quán bar
+park | công viên
+camp | trại cắm trại
+store/shop | cửa hàng
+theater | rạp hát
+library | thư viện
+hospital | bệnh viện
+church | nhà thờ
+market | chợ
+country | quốc gia
+building | tòa nhà
+ground | mặt đất
+space | không gian
+bank | ngân hàng
+location | vị trí
+hat | mũ
+dress | váy
+suit | bộ vest
+skirt | váy ngắn
+shirt | áo sơ mi
+T-shirt | áo thun
+pants | quần
+shoes | giày
+pocket | túi
+coat | áo khoác
+stain | vết bẩn
+clothing | quần áo
+red | màu đỏ
+green | màu xanh lá cây
+light blue | màu xanh nhạt
+dark blue | màu xanh đậm
+yellow | màu vàng
+brown | màu nâu
+pink | màu hồng
+orange | màu cam
+black | màu đen
+white | màu trắng
+gray | màu xám
+color | màu sắc
+son | con trai
+daughter | con gái
+mother | mẹ
+father | cha
+parent | cha mẹ
+baby | em bé
+man | người đàn ông
+woman | người phụ nữ
+brother | anh/em trai
+sister | chị/em gái
+family | gia đình
+grandfather | ông nội
+grandmother | bà nội
+husband | chồng
+wife | vợ
+king | vua
+queen | hoàng hậu
+president | tổng thống
+neighbor | hàng xóm
+child | đứa trẻ
+boy | bé trai
+girl | bé gái
+man | người đàn ông
+woman | người phụ nữ
+human | con người
+friend | bạn
+victim | nạn nhân
+player | người chơi
+fan | người hâm mộ
+crowd | đám đông
+person | người
+Teacher | giáo viên
+Student | học sinh
+Lawyer | luật sư
+Doctor | bác sĩ
+Patient | bệnh nhân
+Waiter | người phục vụ
+Secretary | thư ký
+Priest | linh mục
+Police | cảnh sát
+Army | quân đội
+Soldier | binh sĩ
+Artist | nghệ sĩ
+Author | tác giả
+Manager | quản lý
+Reporter | phóng viên
+Actor | diễn viên
+Job | công việc
+Religion | tôn giáo
+Heaven | thiên đường
+Hell | địa ngục
+Death | cái chết
+Medicine | thuốc
+Money | tiền
+Dollar | đô la
+Bill | hóa đơn
+Marriage | hôn nhân
+Wedding | đám cưới
+Team | đội
+Relationship | mối quan hệ
+Race (ethnicity) | chủng tộc
+Sex (the act) | quan hệ tình dục
+Sex (gender) | giới tính
+Murder | ám sát
+Prison | nhà tù
+Technology | công nghệ
+Energy | năng lượng
+War | chiến tranh
+Peace | hòa bình
+Attack | tấn công
+Election | bầu cử
+Magazine | tạp chí
+Newspaper | báo
+Poison | chất độc
+Gun | súng
+Sport | môn thể thao
+Race (sport) | cuộc đua
+Exercise | bài tập
+Ball | quả bóng
+Game | trò chơi
+Price | giá cả
+Contract | hợp đồng
+Drug | thuốc ma túy
+Sign | biểu ngữ
+Science | khoa học
+God | Đức Chúa Trời
+Band | ban nhạc
+Song | bài hát
+Instrument (musical) | nhạc cụ
+Music | âm nhạc
+Movie | phim
+Art | nghệ thuật
+Coffee | cà phê
+Tea | trà
+Wine | rượu vang
+Beer | bia
+Juice | nước ép
+Water | nước
+Milk | sữa
+Beverage | đồ uống
+Egg | trứng
+Cheese | phô mai
+Bread | bánh mì
+Soup | canh/súp
+Cake | bánh ngọt
+Chicken | gà
+Pork | thịt lợn
+Beef | thịt bò
+Apple | quả táo
+Banana | quả chuối
+Orange | quả cam
+Lemon | quả chanh
+Corn | ngô/bắp
+Rice | cơm
+Oil | dầu
+Seed | hạt giống
+Knife | dao
+Spoon | muỗng
+Fork | nĩa
+Plate | đĩa
+Cup | cốc
+Breakfast | bữa sáng
+Lunch | bữa trưa
+Dinner | bữa tối
+Sugar | đường
+Salt | muối
+Bottle | chai
+Food | thức ăn
+Table | cái bàn
+Chair | cái ghế
+Bed | cái giường
+Dream | giấc mơ
+Window | cửa sổ
+Door | cửa
+Bedroom | phòng ngủ
+Kitchen | nhà bếp
+Bathroom | phòng tắm
+Pencil | bút chì
+Pen | bút mực
+Photograph | bức ảnh
+Soap | xà phòng
+Book | sách
+Page | trang
+Key | chìa khóa
+Paint | sơn
+Letter | thư
+Note | ghi chú
+Wall | tường
+Paper | giấy
+Floor | sàn nhà
+Ceiling | trần nhà
+Roof | mái nhà
+Pool | bể bơi
+Lock | khóa
+Telephone | điện thoại
+Garden | vườn
+Yard | sân
+Needle | kim
+Bag | túi
+Box | hộp
+Gift | quà
+Card | thẻ
+Ring | nhẫn
+Tool | dụng cụ
+Clock | đồng hồ
+Lamp | đèn bàn
+Fan | quạt
+Cell phone | điện thoại di động
+Network | mạng
+Computer | máy tính
+Program (computer) | chương trình máy tính
+Laptop | máy tính xách tay
+Screen | màn hình
+Camera | máy ảnh
+Television | truyền hình
+Radio | đài phát thanh
+Head | đầu
+Neck | cổ
+Face | khuôn mặt
+Beard | râu
+Hair | tóc
+Eye | mắt
+Mouth | miệng
+Lip | môi
+Nose | mũi
+Tooth | răng
+Ear | tai
+Tear (drop) | nước mắt
+Tongue | lưỡi
+Back | lưng
+Toe | ngón chân
+Finger | ngón tay
+Foot | chân
+Hand | tay
+Leg | chân
+Arm | cánh tay
+Shoulder | vai
+Heart | trái tim
+Blood | máu
+Brain | não
+Knee | đầu gối
+Sweat | mồ hôi
+Disease | bệnh tật
+Bone | xương
+Voice | giọng nói
+Skin | da
+Body | cơ thể
+Sea | biển
+Ocean | đại dương
+River | sông
+Mountain | núi
+Rain | mưa
+Snow | tuyết
+Tree | cây
+Sun | mặt trời
+Moon | mặt trăng
+World | thế giới
+Earth | Trái Đất
+Forest | rừng
+Sky | bầu trời
+Plant | cây cối
+Wind | gió
+Soil/Earth | đất
+Flower | hoa
+Valley | thung lũng
+Root | rễ
+Lake | hồ
+Star | ngôi sao
+Grass | cỏ
+Leaf | lá
+Air | không khí
+Sand | cát
+Beach | bãi biển
+Wave | sóng
+Fire | lửa
+Ice | băng
+Island | đảo
+Hill | đồi
+Heat | nhiệt độ
+Nature | thiên nhiên
+Glass | thủy tinh
+Metal | kim loại
+Plastic | nhựa
+Wood | gỗ
+Stone | đá
+Diamond | kim cương
+Clay | đất sét
+Dust | bụi
+Gold | vàng
+Copper | đồng
+Silver | bạc
+Material | vật liệu
+Meter | mét
+Centimeter | centimet
+Kilogram | kilôgam
+Pound | bảng (cân nặng)
+Half | một nửa
+Circle | hình tròn
+Square | hình vuông
+Temperature | nhiệt độ
+Date | ngày tháng
+Weight | cân nặng
+Edge | cạnh
+Corner | góc
+Map | bản đồ
+Dot | chấm
+Consonant | phụ âm
+Vowel | nguyên âm
+Light | ánh sáng
+Sound | âm thanh
+Yes | có
+No | không
+Piece | mảnh
+Pain | đau đớn
+Injury | vết thương
+Hole | lỗ
+Image | hình ảnh
+Pattern | mẫu
+Noun | danh từ
+Verb | động từ
+Adjective | tính từ
+Top | phía trên
+Bottom | phía dưới
+Side | bên cạnh
+Front | phía trước
+Back | phía sau
+Outside | bên ngoài
+Inside | bên trong
+Up | lên
+Down | xuống
+Left | bên trái
+Right | bên phải
+Straight | thẳng
+North | phía bắc
+South | phía nam
+East | phía đông
+West | phía tây
+Direction | hướng
+Summer | mùa hè
+Spring | mùa xuân
+Winter | mùa đông
+Fall | mùa thu
+Season | mùa
+1 | một
+2 | hai
+3 | ba
+4 | bốn
+5 | năm
+6 | sáu
+7 | bảy
+8 | tám
+9 | chín
+10 | mười
+11 | mười một
+12 | mười hai
+13 | mười ba
+14 | mười bốn
+15 | mười lăm
+16 | mười sáu
+17 | mười bảy
+18 | mười tám
+19 | mười chín
+20 | hai mươi
+21 | hai mươi mốt
+22 | hai mươi hai
+30 | ba mươi
+31 | ba mươi mốt
+32 | ba mươi hai
+40 | bốn mươi
+41 | bốn mươi mốt
+42 | bốn mươi hai
+50 | năm mươi
+51 | năm mươi mốt
+52 | năm mươi hai
+60 | sáu mươi
+61 | sáu mươi mốt
+62 | sáu mươi hai
+70 | bảy mươi
+71 | bảy mươi mốt
+72 | bảy mươi hai
+80 | tám mươi
+81 | tám mươi mốt
+82 | tám mươi hai
+90 | chín mươi
+91 | chín mươi mốt
+92 | chín mươi hai
+100 | một trăm
+101 | một trăm lẻ một
+102 | một trăm lẻ hai
+110 | một trăm mười
+111 | một trăm mười một
+1000 | một nghìn
+1001 | một nghìn lẻ một
+10000 | mười nghìn
+100000 | một trăm nghìn
+Million | triệu
+Billion | tỷ
+1st | thứ nhất
+2nd | thứ hai
+3rd | thứ ba
+4th | thứ tư
+5th | thứ năm
+Number | số
+January | tháng một
+February | tháng hai
+March | tháng ba
+April | tháng tư
+May | tháng năm
+June | tháng sáu
+July | tháng bảy
+August | tháng tám
+September | tháng chín
+October | tháng mười
+November | tháng mười một
+December | tháng mười hai
+Monday | thứ hai
+Tuesday | thứ ba
+Wednesday | thứ tư
+Thursday | thứ năm
+Friday | thứ sáu
+Saturday | thứ bảy
+Sunday | chủ nhật
+Year | năm
+Month | tháng
+Week | tuần
+Day | ngày
+Hour | giờ
+Minute | phút
+Second | giây
+Morning | buổi sáng
+Afternoon | buổi chiều
+Evening | buổi tối
+Night | đêm
+Time | thời gian
+Work | làm việc
+Play | chơi
+Walk | đi bộ
+Run | chạy
+Drive | lái xe
+Fly | bay
+Swim | bơi
+Go | đi
+Stop | dừng
+Follow | theo sau
+Think | suy nghĩ
+Speak/Say | nói
+Eat | ăn
+Drink | uống
+Kill | giết
+Die | chết
+Smile | mỉm cười
+Laugh | cười
+Cry | khóc
+Buy | mua
+Pay | trả tiền
+Sell | bán
+Shoot (a gun) | bắn súng
+Learn | học
+Jump | nhảy
+Smell | ngửi
+Hear (a sound) | nghe âm thanh
+Listen (music) | nghe nhạc
+Taste | nếm
+Touch | chạm
+See (a bird) | chim
+Watch (TV) | xem
+Kiss | hôn
+Burn | đốt cháy
+Melt | tan chảy
+Dig | đào
+Explode | nổ
+Sit | ngồi
+Stand | đứng
+Love | yêu
+Pass by | đi qua
+Cut | cắt
+Fight | chiến đấu
+Lie down | nằm
+Dance | nhảy múa
+Sleep | ngủ
+Wake up | thức dậy
+Sing | hát
+Count | đếm
+Marry | kết hôn
+Pray | cầu nguyện
+Win | thắng
+Lose | thua
+Mix/Stir | khuấy trộn
+Bend | uốn cong
+Wash | rửa
+Cook | nấu ăn
+Open | mở
+Close | đóng
+Write | viết
+Call | gọi điện
+Turn | quay
+Build | xây dựng
+Teach | dạy
+Grow | mọc
+Draw | vẽ
+Feed | cho ăn
+Catch | bắt
+Throw | ném
+Clean | làm sạch
+Find | tìm thấy
+Fall | ngã
+Push | đẩy
+Pull | kéo
+Carry | mang
+Break | đập vỡ
+Wear | mặc
+Hang | treo
+Shake | lắc
+Sign | ký tên
+Beat | đánh đập
+Lift | nâng
+Long | dài
+Short (vs long) | ngắn
+Tall | cao
+Short (vs tall) | thấp
+Wide | rộng
+Narrow | hẹp
+Big/Large | lớn
+Small/Little | nhỏ
+Slow | chậm
+Fast | nhanh
+Hot | nóng
+Cold | lạnh
+Warm | ấm
+Cool | mát mẻ
+New | mới
+Old (new) | cũ
+Young | trẻ
+Old (young) | già
+Good | tốt
+Bad | xấu
+Wet | ướt
+Dry | khô
+Sick | ốm
+Healthy | khỏe mạnh
+Loud | to
+Quiet | yên lặng
+Happy | vui
+Sad | buồn
+Beautiful | đẹp
+Ugly | xấu xí
+Deaf | điếc
+Blind | mù
+Nice | đẹp, tốt
+Mean | xấu, tệ
+Rich | giàu
+Poor | nghèo
+Thick | dày
+Thin | mỏng
+Expensive | đắt
+Cheap | rẻ
+Flat | phẳng
+Curved | cong
+Male | nam
+Female | nữ
+Tight | chật, kín
+Loose | lỏng
+High | cao
+Low | thấp
+Soft | mềm mại
+Hard | cứng
+Deep | sâu
+Shallow | nông
+Clean | sạch
+Dirty | bẩn
+Strong | mạnh
+Weak | yếu
+Dead | chết
+Alive | sống
+Heavy | nặng
+Light (heavy) | nhẹ
+Dark | tối
+Light (dark) | sáng
+Nuclear | hạt nhân
+Famous | nổi tiếng
+I | tôi
+You (singular) | bạn
+He | anh ấy
+She | cô ấy
+It | nó
+We | chúng ta
+You (plural) | các bạn
+They | họ
