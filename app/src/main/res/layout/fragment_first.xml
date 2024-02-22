@@ -101,16 +101,16 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/REPLACE"
-        android:layout_width="84dp"
-        android:layout_height="79dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="26dp"
         android:padding="5dp"
         app:backgroundTint="@android:color/transparent"
-        app:icon="@drawable/collection_stars"
-        app:iconTint="@color/primary"
+        app:icon="@drawable/view_collection_foreground"
+        app:iconTint="@color/white"
         app:strokeColor="@color/white" />
 
 </RelativeLayout>
