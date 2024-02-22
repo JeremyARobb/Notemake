@@ -17,7 +17,7 @@ import com.example.notemake.R
 import com.example.notemake.databinding.FragmentFirstBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-//test
+
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
