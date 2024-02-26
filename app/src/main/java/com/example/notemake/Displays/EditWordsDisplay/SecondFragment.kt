@@ -99,11 +99,14 @@ class SecondFragment : Fragment() {
     }
 
     private fun createWordContainer(word1: String, word2: String): LinearLayout {
+
         val wordColumn = createWordColumn()
         //wordColumn.addView(RadioButton(context, null, 0, R.style.AddedRadioButton))
         val textView1 = createWord(word1)
         val textView2 = createWord(word2)
+        val analyticsButton = createAnalyticsButton(wordColumn)
 
+        wordColumn.addView(analyticsButton)
         wordColumn.addView(textView1)
         wordColumn.addView(textView2)
 
@@ -139,6 +142,14 @@ class SecondFragment : Fragment() {
         wordColumnParams.setMargins(0, 0, wordColumnMargin, 0) // Set right margin
         wordColumn.layoutParams = wordColumnParams
         return wordColumn
+    }
+
+    private fun createAnalyticsButton(container: LinearLayout): Button {
+        val analyticsButton = Button(context, null, 0, R.style.AnalyticsButtonStyle).apply {
+            setOnClickListener {
+            }
+        }
+        return analyticsButton
     }
 
     private fun createDeleteButton(container: LinearLayout, word1: String, word2: String): Button {
