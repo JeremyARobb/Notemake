@@ -6,21 +6,95 @@
     android:layout_height="match_parent"
     android:background="@drawable/notemaker_background">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/main_word"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="130dp"
+        android:layout_below="@+id/refresh_button"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Hello"
+        android:textAlignment="gravity"
+        android:textColor="@color/white"
+        android:textSize="48sp" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/textLayout"
+        android:layout_width="match_parent"
+        android:layout_height="763dp"
+        android:layout_above="@+id/viewWordsButton"
+        android:layout_below="@+id/main_word"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="7dp"
+        android:gravity="top"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/main_word"
+        <EditText
+            android:id="@+id/manuallyWriteDifficultyTextBox"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginTop="90dp"
-            android:gravity="center"
-            android:text="Hello"
-            android:textAlignment="gravity"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Enter text here"
+            android:padding="12dp"
             android:textColor="@color/white"
-            android:textSize="48sp" />
+            android:textAlignment="center"
+            android:textColorHint="#888888"
+            android:layout_height="83dp"
+            android:layout_marginTop="125dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="34dp"
+            android:textSize="24sp"
+            android:inputType="text"
+            android:drawablePadding="8dp" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/rightWrongLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/manuallyWriteDifficultyTextBox"
+            android:layout_below="@+id/viewWordsButton"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/wrongButton"
+
+                android:layout_width="200dp"
+                android:layout_height="350dp"
+                android:text="Wrong"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/off"
+                android:textSize="24sp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/rightButton"
+                android:layout_width="200dp"
+                android:layout_height="350dp"
+                android:text="Right"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/on"
+                android:textSize="24sp"
+                app:cornerRadius="20dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonLayouts"
+        android:layout_width="match_parent"
+        android:layout_height="763dp"
+        android:layout_above="@+id/viewWordsButton"
+        android:layout_below="@+id/main_word"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="7dp"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
 
         <Button
             android:id="@+id/button_main_1"
@@ -41,7 +115,7 @@
             android:layout_marginLeft="34dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="34dp"
-            android:text="Xin Chao"
+            android:text="Hello"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:cornerRadius="20dp" />
@@ -53,7 +127,7 @@
             android:layout_marginLeft="34dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="34dp"
-            android:text="Xin Chao"
+            android:text="Hola"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:cornerRadius="20dp" />
@@ -65,7 +139,7 @@
             android:layout_marginLeft="34dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="34dp"
-            android:text="Xin Chao"
+            android:text="Bonjour"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:cornerRadius="20dp" />
@@ -77,12 +151,90 @@
             android:layout_marginLeft="34dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="34dp"
-            android:text="Xin Chao"
+            android:layout_marginBottom="30dp"
+            android:text="Aloha"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:cornerRadius="20dp" />
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/swapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/refresh_button"
+        android:padding="5dp"
+        android:shadowColor="@android:color/transparent"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHighlight="@android:color/transparent"
+        app:backgroundTint="@android:color/transparent"
+        app:icon="@drawable/swapper"
+        app:iconTint="@color/white"
+        app:strokeColor="@color/white"
+        app:strokeWidth="0dp" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/refresh_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/difficulty_button"
+        android:padding="5dp"
+        android:shadowColor="@android:color/transparent"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHighlight="@android:color/transparent"
+        app:backgroundTint="@android:color/transparent"
+        app:icon="@drawable/refresh_button"
+        app:iconTint="@color/white"
+        app:strokeColor="@color/white"
+        app:strokeWidth="0dp" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/difficulty_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/collection_size_button"
+        android:padding="5dp"
+        android:shadowColor="@android:color/transparent"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHighlight="@android:color/transparent"
+        app:backgroundTint="@android:color/transparent"
+        app:icon="@drawable/difficulty"
+        app:iconTint="@color/white"
+        app:strokeColor="@color/white"
+        app:strokeWidth="0dp" />
+
+    <Button
+        android:id="@+id/collection_size_button"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:outlineAmbientShadowColor="@android:color/transparent"
+        android:outlineSpotShadowColor="@android:color/transparent"
+        android:shadowColor="@android:color/transparent"
+        android:text="3"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHighlight="@android:color/transparent"
+        android:textSize="24sp"
+        app:backgroundTint="@android:color/transparent"
+        app:strokeColor="@color/white"
+        app:strokeWidth="0dp" />
+
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/viewWordsButton"
@@ -98,19 +250,5 @@
         app:strokeColor="@color/white"
         app:strokeWidth="2dp"
         android:textColor="@color/white" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/REPLACE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="26dp"
-        android:padding="5dp"
-        app:backgroundTint="@android:color/transparent"
-        app:icon="@drawable/view_collection_foreground"
-        app:iconTint="@color/white"
-        app:strokeColor="@color/white" />
 
 </RelativeLayout>

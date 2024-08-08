@@ -1,5 +1,6 @@
 package com.example.notemake.Displays.EditWordsDisplay
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.example.notemake.databinding.FragmentSecondBinding
 import android.content.Context
 import android.widget.Button
 import androidx.lifecycle.lifecycleScope
+import com.example.notemake.Displays.Helper.helperUtil
 import com.example.notemake.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -43,23 +45,27 @@ class SecondFragment : Fragment() {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
 
-        sharedPref.all.forEach { entry ->
+        val currentData = helperUtil.loadData(requireContext())
+        currentData?.keys?.forEach() { entry ->
             lifecycleScope.launch {
-                val (word1, word2) = entry.value.toString().split("|")
+                val englishWord = currentData[entry]!!.get(0).get(0)
+                val foreignWord = entry
                 // Offload the creation of the word container to a background thread
                 val wordColumn = withContext(Dispatchers.Default) {
-                    createWordContainer(word1, word2)
+                    createWordContainer(englishWord, foreignWord)
                 }
                 // Switch back to the main thread to update the UI
                 binding.newWordContainer.addView(wordColumn)
             }
         }
 
-        binding.importButton.setOnClickListener {
-            val importWords = Translator()
-            importWords.englishToVietnamese655(requireContext(), sharedPref)
+        binding.deleteButton.setOnClickListener {
+            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: throw IllegalStateException("Activity cannot be null")
+            val editor = sharedPref.edit()
+            editor.clear()
+            editor.apply() // or editor.commit()
 
-            //refresh display
+            // Refresh display
             binding.newWordContainer.removeAllViews()
             sharedPref.all.forEach { entry ->
                 lifecycleScope.launch {
@@ -72,6 +78,38 @@ class SecondFragment : Fragment() {
                     binding.newWordContainer.addView(wordColumn)
                 }
             }
+        }
+
+        binding.importButton.setOnClickListener {
+            val importChoices = arrayOf("Vietnamese", "Spanish", "Duolingo Test", "Small Test")
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Choose a language to import")
+            builder.setSingleChoiceItems(importChoices, -1) { dialog, which ->
+                val importWords = Translator()
+                when (which) {
+                    0 -> importWords.englishToVietnamese655(requireContext(), "Vietnamese")
+                    1 -> importWords.englishToSpanish655(requireContext(), sharedPref)
+                    2 -> importWords.englishToVietnamese655(requireContext(), "Duolingo Test")
+                    3 -> importWords.englishToVietnamese655(requireContext(), "Small Test")
+                }
+                dialog.dismiss()
+                val currentData = helperUtil.loadData(requireContext())
+                currentData?.keys?.forEach() { entry ->
+                    lifecycleScope.launch {
+                        val englishWord = currentData[entry]!!.get(0).get(0)
+                        val foreignWord = entry
+                        // Offload the creation of the word container to a background thread
+                        val wordColumn = withContext(Dispatchers.Default) {
+                            createWordContainer(englishWord, foreignWord)
+                        }
+                        // Switch back to the main thread to update the UI
+                        binding.newWordContainer.addView(wordColumn)
+                    }
+                }
+            }
+            builder.setNegativeButton("Cancel", null)
+            val dialog = builder.create()
+            dialog.show()
         }
 
         binding.addWordButton.setOnClickListener {
