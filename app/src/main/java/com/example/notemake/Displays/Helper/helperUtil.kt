@@ -7,6 +7,11 @@ import org.json.JSONObject
 
 class helperUtil {
     companion object {
+        //Current Structure
+        //Key: Foreign Word
+        //First Array: Potential Native words
+        //Second Array: Rate you get word correct
+
         fun saveData(context: Context, data: MutableMap<String, List<List<String>>>) {
             val sharedPreferences: SharedPreferences =
                 context.getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
@@ -40,9 +45,11 @@ class helperUtil {
             jsonObject.keys().forEach { key ->
                 val outerArray = jsonObject.getJSONArray(key)
                 val listOfLists = mutableListOf<List<String>>()
+
                 for (i in 0 until outerArray.length()) {
                     val innerArray = outerArray.getJSONArray(i)
                     val innerList = mutableListOf<String>()
+                    //This is turning the json into strings then adding it to list
                     for (j in 0 until innerArray.length()) {
                         innerList.add(innerArray.getString(j))
                     }

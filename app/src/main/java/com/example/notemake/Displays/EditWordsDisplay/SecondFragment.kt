@@ -60,24 +60,11 @@ class SecondFragment : Fragment() {
         }
 
         binding.deleteButton.setOnClickListener {
-            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: throw IllegalStateException("Activity cannot be null")
-            val editor = sharedPref.edit()
-            editor.clear()
-            editor.apply() // or editor.commit()
-
+            sharedPref.edit().clear().apply()
+            val data = mutableMapOf<String, List<List<String>>>()
+            helperUtil.saveData(requireContext(), data)
             // Refresh display
             binding.newWordContainer.removeAllViews()
-            sharedPref.all.forEach { entry ->
-                lifecycleScope.launch {
-                    val (word1, word2) = entry.value.toString().split("|")
-                    // Offload the creation of the word container to a background thread
-                    val wordColumn = withContext(Dispatchers.Default) {
-                        createWordContainer(word1, word2)
-                    }
-                    // Switch back to the main thread to update the UI
-                    binding.newWordContainer.addView(wordColumn)
-                }
-            }
         }
 
         binding.importButton.setOnClickListener {
@@ -90,7 +77,7 @@ class SecondFragment : Fragment() {
                     0 -> importWords.englishToVietnamese655(requireContext(), "Vietnamese")
                     1 -> importWords.englishToSpanish655(requireContext(), sharedPref)
                     2 -> importWords.englishToVietnamese655(requireContext(), "Duolingo Test")
-                    3 -> importWords.englishToVietnamese655(requireContext(), "Small Test")
+                    3 -> importWords.englishToVietnamese655(requireContext(), "Focused Test")
                 }
                 dialog.dismiss()
                 val currentData = helperUtil.loadData(requireContext())

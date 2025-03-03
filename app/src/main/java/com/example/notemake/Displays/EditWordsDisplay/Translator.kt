@@ -5,8 +5,6 @@ import android.content.SharedPreferences
 import android.util.Log
 import com.example.notemake.Displays.Helper.helperUtil
 import com.example.notemake.R
-import org.json.JSONArray
-import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -19,8 +17,8 @@ class Translator {
             if (fileName == "Vietnamese") {
                 inputStream = context.resources.openRawResource(R.raw.vietnamese)
             }
-            if (fileName == "Small Test") {
-                inputStream = context.resources.openRawResource(R.raw.smallervietnamese)
+            if (fileName == "Focused Test") {
+                inputStream = context.resources.openRawResource(R.raw.smallvietnamesetest)
             }
 
             val initialStat = listOf<String>("5")

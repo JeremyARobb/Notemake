@@ -2,14 +2,12 @@ package com.example.notemake.Displays.HomeDisplay
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Color
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
@@ -17,8 +15,6 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -32,7 +28,7 @@ import kotlinx.coroutines.launch
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class MainGame : Fragment() {
 
     private val sharedPref by lazy {
         activity?.getPreferences(Context.MODE_PRIVATE) ?: throw IllegalStateException("Activity cannot be null")
@@ -55,6 +51,12 @@ class FirstFragment : Fragment() {
     private lateinit var button4: Button
     private lateinit var button5: Button
 
+    private lateinit var button1RevealText: String
+    private lateinit var button2RevealText: String
+    private lateinit var button3RevealText: String
+    private lateinit var button4RevealText: String
+    private lateinit var button5RevealText: String
+
     private var topWord = ""
 
     private lateinit var rightButton: Button
@@ -67,6 +69,9 @@ class FirstFragment : Fragment() {
     private lateinit var layout_button_options: LinearLayout
     private lateinit var layout_text_option: LinearLayout
     private lateinit var right_wrong_layout: LinearLayout
+
+    private lateinit var buttonList: List<Button>
+    private var buttonRevealList = mutableListOf<String>()
 
     private lateinit var manual_text_box: EditText
 
@@ -100,6 +105,14 @@ class FirstFragment : Fragment() {
         button4 = view.findViewById(R.id.button_main_4)
         button5 = view.findViewById(R.id.button_main_5)
 
+        buttonList = listOf(button1, button2, button3, button4, button5)
+        button1RevealText = "huh?"
+        button2RevealText = "huh?"
+        button3RevealText = "huh?"
+        button4RevealText = "huh?"
+        button5RevealText = "huh?"
+        buttonRevealList = listOf(button1RevealText, button2RevealText, button3RevealText, button4RevealText, button5RevealText).toMutableList()
+
         rightButton = view.findViewById(R.id.rightButton)
         wrongButton = view.findViewById(R.id.wrongButton)
 
@@ -130,19 +143,19 @@ class FirstFragment : Fragment() {
     private fun setButtonListeners(view: View) {
         // Code to execute when buttonX is clicked
         button1.setOnClickListener {
-            createRandomWords(view, topWord, 0)
+            checkIfWordCorrect(view, topWord, 0)
         }
         button2.setOnClickListener {
-            createRandomWords(view, topWord, 1)
+            checkIfWordCorrect(view, topWord, 1)
         }
         button3.setOnClickListener {
-            createRandomWords(view, topWord, 2)
+            checkIfWordCorrect(view, topWord, 2)
         }
         button4.setOnClickListener {
-            createRandomWords(view, topWord, 3)
+            checkIfWordCorrect(view, topWord, 3)
         }
         button5.setOnClickListener {
-            createRandomWords(view, topWord, 4)
+            checkIfWordCorrect(view, topWord, 4)
         }
         collection_button.setOnClickListener {
             changeCollectionSize(view)
@@ -169,9 +182,9 @@ class FirstFragment : Fragment() {
             }
         })
 
-        wrongButton.setOnClickListener {
-            wrongButtonClicked()
-        }
+        //wrongButton.setOnClickListener {
+        //    wrongButtonClicked()
+        //}
 
         rightButton.setOnClickListener {
             rightButtonClicked()
@@ -240,7 +253,7 @@ class FirstFragment : Fragment() {
     }
 
     private fun handleManualTextSubmit() {
-        //check if it's close to the right button, if so then make yellow or green, and call createRandomWords
+        //check if it's close to the right button, if so then make yellow or green, and call checkIfWordCorrect
         //and indicate with boolean they were correct
         var correctAnswer = chosenForeignWords[runningGroupedScore]
         var userAnswer = manual_text_box.text.toString()
@@ -266,67 +279,61 @@ class FirstFragment : Fragment() {
             //show Correct and Incorrect buttons
         }
     }
-
-    private fun wrongButtonClicked() {
+    private fun continueClicked(view: View, buttonIndex: Int) {
+        buttonList[buttonIndex].setOnClickListener { checkIfWordCorrect(view, topWord, buttonIndex) }
+        executeNextButton()
+    }
+    private fun wrongButtonClicked(view: View, correctWord: String) {
         val correctWordForeign = chosenForeignWords[runningGroupedScore]
-        helperUtil.addStat(requireContext(), correctWordForeign, 1)
+        helperUtil.addStat(requireContext(), correctWordForeign, -1)
         runningGroupedScore = 0
-
         var count = 0
         //shuffle the groupedCollection, don't let the prev word be the next upcoming word
         chosenForeignWords = chosenForeignWords.shuffled().toMutableList()
         while (currentData[chosenForeignWords[0]]!![0].contains(topWord) && count++ != 5 && totalGrouped != -1) {
             chosenForeignWords = chosenForeignWords.shuffled().toMutableList()
         }
-
-        executeNextButton()
+        // Change colors
+        var counter = 0
+        buttonList.forEach {
+            val buttonTextToShow = it.text.toString() + " | " + buttonRevealList[counter]
+            it.text = buttonTextToShow
+            //TODO: Make it so you show what each word means here, also implement continue as the disable waiter
+            if (currentData[foreignWords[counter]]!![0].contains(correctWord)) {
+                it.setBackgroundColor(Color.GREEN)
+                val currentIndex = counter
+                it.setOnClickListener { continueClicked(view, currentIndex) }
+            }
+            else {
+                it.setBackgroundColor(Color.RED)
+                it.isEnabled = false
+            }
+            counter++
+        }
     }
-
     private fun rightButtonClicked() {
+        //TODO: Make it so there's a button to allow user to see stuff before moving on
         val correctWordForeign = chosenForeignWords[runningGroupedScore]
         helperUtil.addStat(requireContext(), correctWordForeign, 1)
         runningGroupedScore++
 
+        //if user got the whole collection correct in one go, give them a new list
         if (runningGroupedScore == chosenForeignWords.size) {
-            refreshWords()
-        } else {
-            executeNextButton()
-        }
-    }
-
-    //sets the colors of the buttons if wrong, and then calls executeNextButton method
-    //also either adds to runningScore or resets score
-    private fun createRandomWords(view: View, correctWord: String, index: Int) {
-
-        val buttonList = listOf(button1, button2, button3, button4, button5)
-
-        //WRONG ANSWER
-        if(correctWord != "" && !currentData[foreignWords[index]]!![0].contains(correctWord)) {
-            val correctWordForeign = chosenForeignWords[runningGroupedScore]
-            helperUtil.addStat(requireContext(), correctWordForeign, -1)
+            chosenForeignWords = if (totalGrouped == -1) {
+                currentData.keys.toList().shuffled().toMutableList()
+            } else {
+                currentData.keys.toList().shuffled().take(totalGrouped).toMutableList()
+            }
             runningGroupedScore = 0
-            var count = 0
-            //shuffle the groupedCollection, don't let the prev word be the next upcoming word
-            chosenForeignWords = chosenForeignWords.shuffled().toMutableList()
-            while (currentData[chosenForeignWords[0]]!![0].contains(correctWord) && count++ != 5 && totalGrouped != -1) {
-                chosenForeignWords = chosenForeignWords.shuffled().toMutableList()
-            }
-            // Change colors
-            var counter = 0
+
+            //make all buttons green for 2 seconds to indicate user passed a collection
             buttonList.forEach {
-                if (currentData[foreignWords[counter]]!![0].contains(correctWord))
-                    it.setBackgroundColor(Color.GREEN)
-                else
-                    it.setBackgroundColor(Color.RED)
-                counter++
+                it.setBackgroundColor(Color.GREEN)
+                it.isEnabled = false
             }
 
-            // Disable buttons
-            buttonList.forEach { it.isEnabled = false }
-
-            // Pause execution in this coroutine scope for 3 seconds
             lifecycleScope.launch {
-                delay(3000L)
+                delay(2000L)
 
                 // Reset colors
                 buttonList.forEach { it.setBackgroundColor(ContextCompat.getColor(requireContext(),
@@ -337,46 +344,21 @@ class FirstFragment : Fragment() {
                 buttonList.forEach { it.isEnabled = true }
                 executeNextButton()
             }
+        } else {
+            executeNextButton()
         }
-        //CORRECT ANSWER
+    }
+
+
+    //sets the colors of the buttons if wrong, and then calls executeNextButton method
+    //also either adds to runningScore or resets score
+    private fun checkIfWordCorrect(view: View, correctWord: String, index: Int) {
+        if(correctWord != "" && !currentData[foreignWords[index]]!![0].contains(correctWord)) {
+            wrongButtonClicked(view, correctWord)
+        }
         else {
-            val correctWordForeign = chosenForeignWords[runningGroupedScore]
-            helperUtil.addStat(requireContext(), correctWordForeign, 1)
-            runningGroupedScore++
-
-            //if user got the whole collection correct in one go, give them a new list
-            if (runningGroupedScore == chosenForeignWords.size) {
-                chosenForeignWords = if (totalGrouped == -1) {
-                    currentData.keys.toList().shuffled().toMutableList()
-                } else {
-                    currentData.keys.toList().shuffled().take(totalGrouped).toMutableList()
-                }
-                runningGroupedScore = 0
-
-                //make all buttons green for 2 seconds to indicate user passed a collection
-                buttonList.forEach {
-                        it.setBackgroundColor(Color.GREEN)
-                        it.isEnabled = false
-                }
-
-                lifecycleScope.launch {
-                    delay(2000L)
-
-                    // Reset colors
-                    buttonList.forEach { it.setBackgroundColor(ContextCompat.getColor(requireContext(),
-                        R.color.primary
-                    )) }
-
-                    // Enable buttons
-                    buttonList.forEach { it.isEnabled = true }
-                    executeNextButton()
-                }
-            } else {
-                executeNextButton()
-            }
-
+            rightButtonClicked()
         }
-
     }
 
     fun resetManualLayout() {
@@ -393,56 +375,62 @@ class FirstFragment : Fragment() {
     //Chooses the next set of words to display to user
     @SuppressLint("SetTextI18n")
     fun executeNextButton() {
+        // Reset colors
+        buttonList.forEach { it.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.primary
+        )) }
+
+        // Enable buttons
+        buttonList.forEach { it.isEnabled = true }
+
         resetManualLayout()
 
-        if(currentData.keys.size >= 6)
-        {
-            foreignWords = currentData.keys.toList().shuffled().take(6).toMutableList()
-            //chooses a random english word that corresponds with foreign word
-            val englishWordListForm = currentData[chosenForeignWords[runningGroupedScore]]!![0].shuffled().take(1)
-            val englishWord = englishWordListForm.joinToString("")
-            //edge case where our random selection might have included the correct answer (should be 5 wrong and we make a random one right)
-            if (foreignWords.contains(chosenForeignWords[runningGroupedScore]))
-            {
-                foreignWords[foreignWords.indexOf(chosenForeignWords[runningGroupedScore])] = foreignWords[5]
-            }
-
-            //Chose random index to be correct
-            foreignWords[(0..4).random()] = chosenForeignWords[runningGroupedScore].toString()
-
-            topWord = englishWord
-
-
-            if (!wordSwap) {
-                mainWord.text = englishWord
-
-                button1.text = foreignWords[0]
-                button2.text = foreignWords[1]
-                button3.text = foreignWords[2]
-                button4.text = foreignWords[3]
-                button5.text = foreignWords[4]
-            }
-            else {
-                mainWord.text = chosenForeignWords[runningGroupedScore]
-
-                button1.text = currentData[foreignWords[0]]!![0].shuffled().take(1)[0]
-                button2.text = currentData[foreignWords[1]]!![0].shuffled().take(1)[0]
-                button3.text = currentData[foreignWords[2]]!![0].shuffled().take(1)[0]
-                button4.text = currentData[foreignWords[3]]!![0].shuffled().take(1)[0]
-                button5.text = currentData[foreignWords[4]]!![0].shuffled().take(1)[0]
-            }
-
-
-        }
-        else
-        {
+        if(currentData.keys.size < 6) {
             mainWord.text = "Welcome!"
-            button1.text = "Please add more words (6 minimum)"
-            button2.text = "Please add more words (6 minimum)"
-            button3.text = "Please add more words (6 minimum)"
-            button4.text = "Please add more words (6 minimum)"
-            button5.text = "Please add more words (6 minimum)"
+            button1.text = "Hi!"
+            button2.text = "Hola!"
+            button3.text = "Xin chào"
+            button4.text = "مرحبًا"
+            button5.text = "S Suilad"
+            return;
         }
+
+        val chosenForeignWord = chosenForeignWords[runningGroupedScore]
+
+        foreignWords = currentData.keys.toList().shuffled().take(6).toMutableList()
+        //chooses a random english word that corresponds with foreign word
+        val englishWordListForm = currentData[chosenForeignWord]!![0].shuffled().take(1)
+        val englishWord = englishWordListForm.joinToString("")
+        //edge case where our random selection might have included the correct answer (should be 5 wrong and we make a random one right)
+        if (foreignWords.contains(chosenForeignWord))
+        {
+            //there are 5 shown words, if we take 6 from a list and the correct one is in list then it is not in index 5 (if its index 5 we don't care)
+            foreignWords[foreignWords.indexOf(chosenForeignWord)] = foreignWords[5]
+        }
+
+        //Chose random index to be correct
+        foreignWords[(0..4).random()] = chosenForeignWord.toString()
+
+        topWord = englishWord
+
+        var counter = 0
+        if (!wordSwap) {
+            mainWord.text = englishWord
+            buttonList.forEach {
+                it.text = foreignWords[counter]
+                buttonRevealList[counter] = currentData[foreignWords[counter]]!![0].take(1)[0]
+                counter++
+            }
+        }
+        else {
+            mainWord.text = chosenForeignWord
+            buttonList.forEach {
+                it.text = currentData[foreignWords[counter]]!![0].shuffled().take(1)[0]
+                buttonRevealList[counter] = foreignWords[counter]
+                counter++
+            }
+        }
+
     }
 
     override fun onDestroyView() {
